@@ -24,7 +24,7 @@ If you just type at MATLAB
 
 You'll see a sharp transition as K increases, when the total number of particles is N = 100:
 
-
+![simple landscape analysis](example_output/screenshots/simple_landscape_analysis_SCREENSHOT.png)
 
 You can see a less sharp transition if N is reduced to 20 (check out alternative parameters in `simple_landscape_analysis.m`)
 
@@ -38,11 +38,17 @@ Just type in MATLAB
 ```
 
 The default parameters simulate a 15x15 box, increasing the bond strength. 
+Completing all 19 simulations takes about 10 minutes on a MacBook Pro (2.9GHz, i7). 
+
 Figure 1 show snapshots of the simulations as they are running.
+
+![simulate box figure1](example_output/screenshots/simulate_box_figure1_SCREENSHOT.png)
 
 After completion, 
 * Figure 1 shows the snapshot of the last simluation (which should be totally condensed)
-* Figure 2 shows a scan of num_free with increasing bond strength. Should see a reasonably sharp transition
-* Figure 3 shows snapshots of all the different simulatios with increasing bond strength
+* Figure 2 shows a scan of num_free with increasing bond strength. Should see a reasonably sharp transition:
+![simulate box figure1](example_output/screenshots/simulate_box_figure2_SCREENSHOT.png)
+* Figure 3 shows snapshots of all the different simulatios with increasing bond strength:
+![simulate box figure1](example_output/screenshots/simulate_box_figure3_SCREENSHOT.png)
 * Figure 4 is used to make a movie for K = 20.  [Check the code for how to get other movies]
 
