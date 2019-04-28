@@ -1,15 +1,28 @@
 figure(3)
-N = 100;
+L = 15; % size of box
 x = [0:N];
-
 loner_energy = -2.0;
 min_interactions = 0;
 
-all_K = 10.^[-2:0.05:1];
-%all_K = [0.1 0.2 0.5 1 2 5 10 20 50 100]; % K_d's, in units of 1/pixel-size  -- for 20 particles, min_interact 4
-%all_K = [0.01 0.02 0.05 0.1 0.2 0.5 1 2 5 10]; % K_d's, in units of 1/pixel-size  -- for 100 particles, min_interact 4
-all_C = log( all_K*L*L/N )/n_neighbor;
-E0 = 10; % penalty for bringing together particles (box size)
+% scan through these equilibrium constants for particle-particle
+% interactions
+N = 100;  
+all_K = 10.^[-2: 0.05: 1];
+
+% use these parameters instead to see how fewer particles give a
+%  less sharp transition --
+N = 20;  
+all_K = 10.^[-2: 0.05: 2.5];
+
+% convert desired approximate equilibrium constant (K_d) for entering the
+%  condensate (with n_neighbor bonds) to an energy per bond (C) --
+%   note that kT = 1.0, and this is basically just a logarithm.
+n_neighbor = 8;
+all_C = log( all_K*L*L/N )/n_neighbor; 
+
+% Further penalty for bringing together particles (expanding box size) --
+%  this is kind of a fudge factor.
+E0 = 10; 
 
 clear f;
 for m = 1:length( all_C )
@@ -20,9 +33,9 @@ for m = 1:length( all_C )
 
     E(1) = loner_energy; % loner energy is important
     boltzmann = exp( -E );
-    f(m) = boltzmann(1)/sum( boltzmann )    
-
+    f(m) = boltzmann(1)/sum( boltzmann );  
 end
 plot( all_K, f*N );
-ylabel( 'num free' )
-xlabel( 'K' )
+xlabel( 'K (in k_B T)' );
+ylabel( 'num free' );
+title( sprintf( 'Condensation of %d particles in box. Loner bonus energy: %f',N,loner_energy) );

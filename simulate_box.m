@@ -12,32 +12,33 @@
 % (C) R. Das, Stanford University 2019
 
 % 'canonical simulations'
-%NITER = 500000; 
-%L = 15; % size of box
-%N = 20; % number of particles
-%all_K = [0.1 0.2 0.5 1 2 5 10 20 30 40 45 50 60 70 80 90 100 200 500]; % K_d's, in units of 1/pixel-size
-%%all_K = [0.1 0.2 0.5 1 2 5 10 20 50 100]; % K_d's, in units of 1/pixel-size  -- for 20 particles, min_interact 4
-%%all_K = [0.01 0.02 0.05 0.1 0.2 0.5 1 2 5 10]; % K_d's, in units of 1/pixel-size  -- for 100 particles, min_interact 4
-%loner_energy = -2.5; % cooperativity 'enforcement'
-%min_interactions = 0; % any particle with fewer than this number of bonds does not get a bonus
-max_interactions = 0;
-
-
-NITER = 10000000; 
-L = 40; % size of box
-N = 100; % number of particles
-all_K = [0.1 0.2 0.5 1 2 5 10 20 30 40 45 50 60 70 80 90 100 150 200 500]; % K_d's, in units of 1/pixel-size
-loner_energy = -2.5; % cooperativity 'enforcement'
-min_interactions = 0; % any particle with fewer than this number of bonds does not get a bonus
-max_interactions = 0;
 
 NITER = 500000; 
-L = 40; % size of box
-N = 100; % number of particles
-all_K = 1000*[0.1 0.2 0.5 1 2 5 10 20 30 40 45 50 60 70 80 90 100 150 200 500]; % K_d's, in units of 1/pixel-size
+L = 15; % size of box
+N = 20; % number of particles
+all_K = [0.1 0.2 0.5 1 2 5 10 20 30 40 45 50 60 70 80 90 100 200 500]; % K_d's, in units of 1/pixel-size
 loner_energy = -2.5; % cooperativity 'enforcement'
 min_interactions = 0; % any particle with fewer than this number of bonds does not get a bonus
-max_interactions = 3;
+max_interactions = 0;
+
+% big runs -- will take overnight on a laptop
+%NITER = 10000000; 
+%L = 40; % size of box
+%N = 100; % number of particles
+%all_K = [0.1 0.2 0.5 1 2 5 10 20 30 40 45 50 60 70 80 90 100 150 200 500]; % K_d's, in units of 1/pixel-size
+%loner_energy = -2.5; % cooperativity 'enforcement'
+%min_interactions = 0; % any particle with fewer than this number of bonds does not get a bonus
+%max_interactions = 0;
+
+% quick runs with max_interactions=3, which enforces that multimers don't
+% grow beyond little squares.
+%NITER = 500000; 
+%L = 40; % size of box
+%N = 100; % number of particles
+%all_K = 1000*[0.1 0.2 0.5 1 2 5 10 20 30 40 45 50 60 70 80 90 100 150 200 500]; % K_d's, in units of 1/pixel-size
+%loner_energy = -2.5; % cooperativity 'enforcement'
+%min_interactions = 0; 
+%max_interactions = 3;
 
 % How to scan through condensation transition:
 % K_d ~ exp( C * n_neighbor ) * L * L 
