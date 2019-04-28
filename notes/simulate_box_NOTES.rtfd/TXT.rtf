@@ -1,0 +1,220 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf830
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red34\green139\blue34;}
+{\*\expandedcolortbl;;\csgenericrgb\c13333\c54510\c13333;}
+\margl1440\margr1440\vieww20660\viewh24580\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \ul \ulc0 14 Apr, 2019\
+\ulnone simulate_box\
+silly monte Carlo to generate movies for Macromolecules condensation lecture\
+\
+Scanning \'91K\'92 (estimated equilibrium constant if 20 particles in 15x15 box formed single bonds), from 0.1 to 100.\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs20 \cf0 num_bound / num_free = (N/L*L) x exp(-all_C * n_neighbor) 
+\fs24 \
+
+\fs20 all_C = log( all_K*L*L/N )/n_neighbor;
+\fs24 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+here, assuming n_neighbor =8 \'97> bonds can be to 4 neighbors as well as 4 diagonal neighbors.\
+\
+Look for sharp transition, expect \
+\
+<n_free> ~ 1/(1+K^n_Hill)\
+\
+Ran 10k cycles.\
+\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-14 at 5.15.56 PM.png \width7900 \height10260
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-14 at 5.11.16 PM.png \width7560 \height10120
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+Definitely see condensation at extreme, but not seeing \'91ultrasensitivity\'92 in <num_free> vs. K plot:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-14 at 5.11.08 PM.png \width10260 \height8140
+}¬}\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\
+Let\'92s run overnight with 10x statistics (100k cycles).\
+\
+Much better stats \'96 but still no cooperativity/ultrasensitivity.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-15 at 8.31.28 AM.png \width7760 \height10360
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-15 at 8.31.32 AM.png \width10240 \height7760
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i \cf0 save save_simulate_box_mininteractions0_100kcycles.mat\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i0 \cf0 \
+Later in the week can also\
+\'95\'a0profile code and accelerate (its really non-optimized right now).\
+\'95\'a0get movies\
+\'95\'a0use multiple cores(?)\
+\'95 figure out how to see ultrasensitivity. Maybe the issue is 2D vs. 3D?\
+\
+run again forcing min_interactions = 2. I.e. a particle with 1 bond (\'91dimer\'92) will not count. Should simulate \'91nucleation\'92 better, and hopefully elicit sharper transition.\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i \cf0 save save_simulate_box_mininteractions2_10kcycles.mat\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\i0 \cf0 Doesn\'92t look much more cooperative. But note that <num_free> is higher, so something happened \'96 Oh wait, that\'92s because I sort of miscalculated num-free \'97 fortuitous dimers don\'92t count anymore.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-15 at 3.05.46 PM.png \width7740 \height9140
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-15 at 3.05.36 PM.png \width10240 \height7820
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+Set min_interactions at 4, and ran 10k cycles \'97> got something more cooperative. Forgot to take a screenshot before MATLAB crashed. Anyway, do an overnight run with 100k cycles \'97 yup here we go:\
+\
+>> save save_simulate_box_mininteractions4_100kcycles.mat\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-16 at 9.12.34 AM.png \width7500 \height10080
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-16 at 9.12.29 AM.png \width10280 \height7940
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+Last, tried to see if increasing number of particles improves cooperatively of transition. Here, had to lower K values to see anything. From a 1k cycle simulation, not too promising \'97 similar cooperativity:\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-16 at 9.25.40 AM.png \width7680 \height9860
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-16 at 9.25.43 AM.png \width9980 \height7980
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Had a new idea \'97 there should be a \'91loner energy\'92 \'97 favor single particles with no interactions. OK, beginning to see some weak cooperatively even without min_interactions cutoff.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 12.44.38 PM.png \width7880 \height10300
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 12.44.35 PM.png \width10440 \height8100
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+for fun,  simple_landscape_analysis just computes boltzmann weights for each state.\
+Interestingly with N = 20 particles, can\'92t get a super-sharp transition \'97 not really in there thermodynamic limit:\
+\
+\
+N= 20, E0 = 10\
+E = E0 - C x.\
+where C = log( K ) +const.\
+loner_energy = -2.0\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 1.04.14 PM.png \width10140 \height7920
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+need more particles to see sharp transition (e.g., N = 100):\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 1.05.56 PM.png \width10260 \height7860
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+Aha, that explains it. Problem, since I\'92ve got finite compute.\
+Oh wait, profiled code \'97 99.9% of the time was in plotting, not in compute! So can immediately get way more statistics!!\
+\
+Here we go:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs20 \cf0 L = 15; \cf2 % size of box
+\fs24 \cf0 \
+
+\fs20 N = 20; \cf2 % number of particles
+\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs20 \cf2  % cooperativity 'enforcement':
+\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs20 \cf0 loner_energy = -2.5;
+\fs24 \
+
+\fs20 min_interactions = 0; \cf2 % any particle with fewer than this number of bonds does not get a bonus
+\fs24 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0 \cf0 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 3.02.32 PM.png \width7420 \height10020
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 3.02.30 PM.png \width10400 \height7820
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+Can even do more cycles (500k)\
+\
+save simulate_box_loner2.5_500k.mat\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 4.27.52 PM.png \width9900 \height3740
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-22 at 4.27.56 PM.png \width7240 \height9120
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+And also made a movie at K=50 to show condensates flickering in and out.\
+\
+Sweet.\
+Can we run longer simulations with more particles?\
+\
+Yes, it ran great, though I forgot to save the .mat file!\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-23 at 1.14.00 PM.png \width10380 \height7860
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-23 at 1.31.04 PM.png \width7340 \height9220
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+Also ran with a max_interactions parameter (3) \'97 favors tetris squares \'97 not loss of cooperatively/sharp threshold.\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-23 at 2.33.14 PM.png \width7040 \height8780
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 {{\NeXTGraphic Screen Shot 2019-04-23 at 2.33.18 PM.png \width10160 \height8120
+}¬}\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+}
